@@ -1,0 +1,33 @@
+# the2nd_l02_practice_03
+1) Перейдите в созданный в задании the2nd_l02_practice2_01 каталог LESSON_02/practice
+2) Создайте каталог the2nd_l02_practice_03
+3) Перейдите в каталог the2nd_l02_practice_03
+4) Скопируйте каталог practice_3 из ранее созданного каталога the2nd_l02_practice_01
+5) Проверьте содержимое каталога practice_3 (в нем должны быть файлы script_01.py, script_02.py)
+6) Откройте при помощи nano script_01.py
+7) Добавьте в файл код:
+import requests
+def random_joke():
+    BASE_URL = "https://icanhazdadjoke.com"
+    r = requests.get(BASE_URL, headers={'Accept':'application/json'})
+    data = r.json()
+    joke = data['joke']
+    print(joke)
+    filename = data['id'] + '.txt'
+    with open(filename, 'w') as f:
+        f.write(joke)
+random_joke()
+++8) сохраните файл script_01.py
+9) В режиме терминала запустите script_01.py при помощи python не менее пяти раз
+10) Посмотрите содержимое каталога practice_3
+11) Выборочно посмотрите содержимое любого из созданных txt файлов (в терминале)
+12) Откройте при помощи nano script_02.py
+13) Добавьте в файл код:
+from script_01 import random_joke as rj
+rj()
+14) сохраните файл script_02.py
+15) В режиме терминала запустите script_02.py при помощи python не менее трех раз
+16) Посмотрите содержимое каталога в режиме -all
+17) Посмотрите историю
+18) Создайте txt файл task_03_log.txt
+19) Сохраните историю в файл task_03_log.txt, начиная с создания каталога the2nd_l02_practice_03

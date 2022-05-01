@@ -1,0 +1,342 @@
+    1  pwd
+    2  dir
+    3  cd
+    4  pwd
+    5  cd Desktop
+    6  pwd
+    7  dir
+    8  cd учеба
+    9  зpwd
+   10  pwd
+   11  cd f
+   12  cd f:/
+   13  pwd
+   14  dir
+   15  cd учеба
+   16  dir
+   17  cd L01M01_cli
+   18  cd L02M02_cli
+   19  dir
+   20  cd practice_lesson_02
+   21  dir
+   22  pwd
+   23  mkdir practice_1
+   24  mkdir practice_2
+   25  mkdir practice_3
+   26  cd practice_1
+   27  pwd
+   28  dir
+   29  new_item ex_01.txt
+   30  New_item ex_01.txt
+   31  help
+   32  help new_item
+   33  New_Item ex_01.txt
+   34  New-Item ex_01.txt
+   35  touch ex_01.txt
+   36  touch ex_02.txt
+   37  touch ex_03.txt
+   38  touch ex_04.txt
+   39  dir
+   40  dir -a
+   41  touch script_01.py
+   42  touch script_02.py
+   43  echo  When Dad drops a pea off of his plate ‘oh dear I’ve pee’d on the table!
+   44  echo How many bones are in the human hand? A handful of them.>ex_01.txt
+   45  echo How do you tell the difference between a crocodile and an alligator? You will see one later and one in a while. > ex_02.txt
+   46  echo [200~If you walk into a forest and cut down a tree, but the tree doesn't understand why you cut it down, do you think it's stumped?
+   47  echo If you walk into a forest and cut down a tree, but the tree doesn't understand why you cut it down, do you think it's stumped?>ex_01.txt
+   48   
+   49  echo If you walk into a forest and cut down a tree, but the tree doesn't understand why you cut it down, do you think it's stumped?>ex_04.txt
+   50  echo If you walk into a forest and cut down a tree, but the tree doesn't understand why you cut it down, do you think it's stumped?>ex_05.txt
+   51  echo If you walk into a forest and cut down a tree, but the tree doesn't understand why you cut it down, do you think it's stumped?>ex_06.txt
+   52  cat ex_01.txt
+   53  cat ex_02.txt
+   54  cat ex_03.txt
+   55  cat ex_04.txt
+   56  echo hihihihihi>ex_03.txt
+   57  cat ex_01.txt
+   58  cat ex_03.txt
+   59  help cp
+   60  info cp
+   61  cp ex_03.txt
+   62  cp --help
+   63  cp ex_03.txt practice_2
+   64  cp ex_04.txt practice_2
+   65  mv --help
+   66  dir
+   67  mv script_01.py practice_3
+   68  mv script_02.py practice_3
+   69  dir
+   70  rm ex_03.txt
+   71  rm ex_04.txt
+   72  dir
+   73  cd..
+   74  cd ..
+   75  cd f:/
+   76  cd учеба
+   77  dir
+   78  cd  L02M02_cli
+   79  dir
+   80  cd practice_lesson_02
+   81  dir
+   82  cd practice_1
+   83  dir
+   84  less ex_01.txt
+   85  cat ex_02.txt
+   86  cd ..
+   87  rmdir practice_1
+   88  del pactice_1
+   89  rd pactice_1
+   90  rmdir practice_1
+   91  rmdir -rf practice_1
+   92  rm -rf pactice_1
+   93  dir
+   94  rm -rf pactice_1
+   95  dir
+   96  rmdir practice_1
+   97  sudo rm -rf practice_1
+   98  rm -rf practice_1
+   99  cd practice
+  100  cd practice_1
+  101  dir
+  102  New-Item task_01-log.txt
+  103  touch task_01-log.txt
+  104  get-history
+  105  history
+  106  echo [200~    1  pwd
+  107      2  dir
+  108      3  cd
+  109      4  pwd
+  110      5  cd Desktop
+  111      6  pwd
+  112      7  dir
+  113      8  cd учеба
+  114      9  зpwd
+  115     10  pwd
+  116     11  cd f
+  117     12  cd f:/
+  118     13  pwd
+  119     14  dir
+  120     15  cd учеба
+  121     16  dir
+  122     17  cd L01M01_cli
+  123     18  cd L02M02_cli
+  124     19  dir
+  125     20  cd practice_lesson_02
+  126     21  dir
+  127     22  pwd
+  128     23  mkdir practice_1
+  129     24  mkdir practice_2
+  130     25  mkdir practice_3
+  131     26  cd practice_1
+  132     27  pwd
+  133     28  dir
+  134     29  new_item ex_01.txt
+  135     30  New_item ex_01.txt
+  136     31  help
+  137     32  help new_item
+  138     33  New_Item ex_01.txt
+  139     34  New-Item ex_01.txt
+  140     35  touch ex_01.txt
+  141     36  touch ex_02.txt
+  142     37  touch ex_03.txt
+  143     38  touch ex_04.txt
+  144     39  dir
+  145     40  dir -a
+  146     41  touch script_01.py
+  147     42  touch script_02.py
+  148     43  echo  When Dad drops a pea off of his plate ‘oh dear I’ve pee’d on the table!
+  149     44  echo How many bones are in the human hand? A handful of them.>ex_01.txt
+  150     45  echo How do you tell the difference between a crocodile and an alligator? You will see one later and one in a while. > ex_02.txt
+  151     46  echo If you walk into a forest and cut down a tree, but the tree doesn't understand why you cut it down, do you think it's stumped?
+  152     47  echo If you walk into a forest and cut down a tree, but the tree doesn't understand why you cut it down, do you think it's stumped?>ex_01.txt
+  153     48
+  154     49  echo If you walk into a forest and cut down a tree, but the tree doesn't understand why you cut it down, do you think it's stumped?>ex_04.txt
+  155     50  echo If you walk into a forest and cut down a tree, but the tree doesn't understand why you cut it down, do you think it's stumped?>ex_05.txt
+  156     51  echo If you walk into a forest and cut down a tree, but the tree doesn't understand why you cut it down, do you think it's stumped?>ex_06.txt
+  157     52  cat ex_01.txt
+  158     53  cat ex_02.txt
+  159     54  cat ex_03.txt
+  160     55  cat ex_04.txt
+  161     56  echo hihihihihi>ex_03.txt
+  162     57  cat ex_01.txt
+  163     58  cat ex_03.txt
+  164     59  help cp
+  165     60  info cp
+  166     61  cp ex_03.txt
+  167     62  cp --help
+  168     63  cp ex_03.txt practice_2
+  169     64  cp ex_04.txt practice_2
+  170     65  mv --help
+  171     66  dir
+  172     67  mv script_01.py practice_3
+  173     68  mv script_02.py practice_3
+  174     69  dir
+  175     70  rm ex_03.txt
+  176     71  rm ex_04.txt
+  177     72  dir
+  178     73  cd..
+  179     74  cd ..
+  180     75  cd f:/
+  181     76  cd учеба
+  182     77  dir
+  183     78  cd  L02M02_cli
+  184     79  dir
+  185     80  cd practice_lesson_02
+  186     81  dir
+  187     82  cd practice_1
+  188     83  dir
+  189     84  less ex_01.txt
+  190     85  cat ex_02.txt
+  191     86  cd ..
+  192     87  rmdir practice_1
+  193     88  del pactice_1
+  194     89  rd pactice_1
+  195     90  rmdir practice_1
+  196     91  rmdir -rf practice_1
+  197     92  rm -rf pactice_1
+  198     93  dir
+  199     94  rm -rf pactice_1
+  200     95  dir
+  201     96  rmdir practice_1
+  202     97  sudo rm -rf practice_1
+  203     98  rm -rf practice_1
+  204     99  cd practice
+  205    100  cd practice_1
+  206    101  dir
+  207    102  New-Item task_01-log.txt
+  208    103  touch task_01-log.txt
+  209    104  get-history
+  210    105  history
+  211  echo 1  pwd
+  212      2  dir
+  213      3  cd
+  214      4  pwd
+  215      5  cd Desktop
+  216      6  pwd
+  217      7  dir
+  218      8  cd учеба
+  219      9  зpwd
+  220     10  pwd
+  221     11  cd f
+  222     12  cd f:/
+  223     13  pwd
+  224     14  dir
+  225     15  cd учеба
+  226     16  dir
+  227     17  cd L01M01_cli
+  228     18  cd L02M02_cli
+  229     19  dir
+  230     20  cd practice_lesson_02
+  231     21  dir
+  232     22  pwd
+  233     23  mkdir practice_1
+  234     24  mkdir practice_2
+  235     25  mkdir practice_3
+  236     26  cd practice_1
+  237     27  pwd
+  238     28  dir
+  239     29  new_item ex_01.txt
+  240     30  New_item ex_01.txt
+  241     31  help
+  242     32  help new_item
+  243     33  New_Item ex_01.txt
+  244     34  New-Item ex_01.txt
+  245     35  touch ex_01.txt
+  246     36  touch ex_02.txt
+  247     37  touch ex_03.txt
+  248     38  touch ex_04.txt
+  249     39  dir
+  250     40  dir -a
+  251     41  touch script_01.py
+  252     42  touch script_02.py
+  253     43  echo  When Dad drops a pea off of his plate ‘oh dear I’ve pee’d on the table!
+  254     44  echo How many bones are in the human hand? A handful of them.>ex_01.txt
+  255     45  echo How do you tell the difference between a crocodile and an alligator? You will see one later and one in a while. > ex_02.txt
+  256     46  echo If you walk into a forest and cut down a tree, but the tree doesn't understand why you cut it down, do you think it's stumped?
+  257     47  echo If you walk into a forest and cut down a tree, but the tree doesn't understand why you cut it down, do you think it's stumped?>ex_01.txt
+  258     48
+  259     49  echo If you walk into a forest and cut down a tree, but the tree doesn't understand why you cut it down, do you think it's stumped?>ex_04.txt
+  260     50  echo If you walk into a forest and cut down a tree, but the tree doesn't understand why you cut it down, do you think it's stumped?>ex_05.txt
+  261     51  echo If you walk into a forest and cut down a tree, but the tree doesn't understand why you cut it down, do you think it's stumped?>ex_06.txt
+  262     52  cat ex_01.txt
+  263     53  cat ex_02.txt
+  264     54  cat ex_03.txt
+  265     55  cat ex_04.txt
+  266     56  echo hihihihihi>ex_03.txt
+  267     57  cat ex_01.txt
+  268     58  cat ex_03.txt
+  269     59  help cp
+  270     60  info cp
+  271     61  cp ex_03.txt
+  272     62  cp --help
+  273     63  cp ex_03.txt practice_2
+  274     64  cp ex_04.txt practice_2
+  275     65  mv --help
+  276     66  dir
+  277     67  mv script_01.py practice_3
+  278     68  mv script_02.py practice_3
+  279     69  dir
+  280     70  rm ex_03.txt
+  281     71  rm ex_04.txt
+  282     72  dir
+  283     73  cd..
+  284     74  cd ..
+  285     75  cd f:/
+  286     76  cd учеба
+  287     77  dir
+  288     78  cd  L02M02_cli
+  289     79  dir
+  290     80  cd practice_lesson_02
+  291     81  dir
+  292     82  cd practice_1
+  293     83  dir
+  294     84  less ex_01.txt
+  295     85  cat ex_02.txt
+  296     86  cd ..
+  297     87  rmdir practice_1
+  298     88  del pactice_1
+  299     89  rd pactice_1
+  300     90  rmdir practice_1
+  301     91  rmdir -rf practice_1
+  302     92  rm -rf pactice_1
+  303     93  dir
+  304     94  rm -rf pactice_1
+  305     95  dir
+  306     96  rmdir practice_1
+  307     97  sudo rm -rf practice_1
+  308     98  rm -rf practice_1
+  309     99  cd practice
+  310    100  cd practice_1
+  311    101  dir
+  312    102  New-Item task_01-log.txt
+  313    103  touch task_01-log.txt
+  314    104  get-history
+  315    105  history
+  316  > task_01_log.txt
+  317  help history
+  318  dir
+  319  dir
+  320  dir
+  321  history -anrw task_01_log.txt
+  322  history task_01_log.txt
+  323  history
+  324  help history
+  325  history >> task_01_log.txt
+  326  cat task_01_log.txt
+  327  cd f:/
+  328  учеба
+  329  cd учеба
+  330  dir
+  331  cd L02M02_cli
+  332  dir
+  333  cd 200~practice_lesson_02
+  334  cd practice_lesson_02
+  335  cd practice_2
+  336  nano jokes.txt
+  337  cat jokes.txt
+  338  get-history
+  339  history
+  340  New-Item task_02_log.txt
+  341  touch task_02_log.txt
+  342  history >> task_02_log.txt
