@@ -105,18 +105,18 @@ def create_calendar_pdf(pdf_filename, calendar_image_pull):
         # pdf.multi_cell(200, 10, txt=TEXT)
     pdf.output(pdf_filename)
 
-def YEAR_input():
+def choose_year(): #ввод года
     flag = True
     while flag == True:
-        year = int(input('Введите год для календаря(от 1900 до 2049)\n'))
+        print('Введите год для календаря(от 1900 до 2049)')
+        year = int(input())
         if year >= 1900 and year <= 2049:
             flag = False
             return year
         else:
             print('Введите год в верном диапазоне!\n')
 
-
-def choose_category():#возвращает список [category, my_own]
+def choose_category():#выбор категории, возвращает список [category, my_own]
         while True:
             print("""Введите число, чтобы выбрать категорию от 1 до 19
 1 - fashion
@@ -168,6 +168,49 @@ def choose_category():#возвращает список [category, my_own]
             else:
                 print('не выбран ни один из вариантов')
 
+def choose_color(): #выбор цвета
+    while True:
+            print('''Введите <Y>, <N> или <R> 
+    Если Вы хотите выбрать цвет календаря, то введите <Y>
+    Если Вы хотите использовать цвет по умолчанию (Индиго: R-75, G-0, B-130), то введите <N>
+    Если Вы хотите использовать случайный цвет, то введите <R>''')
+            color_choise = input()
+            print(color_choise)
+            if color_choise.upper() == 'Y':
+                while True:
+                    print('Введите значение от 0 до 255 для КРАСНОГО:')
+                    USER_RED = int(input())
+                    if USER_RED > 255 or USER_RED < 0:
+                        print('Вы ввели число вне диапазона от 0 до 255')
+                        continue
+                    else:
+                        break
+                while True:
+                    print('Введите значение от 0 до 255 для ЗЕЛЕНОГО:')
+                    USER_GREEN = int(input())
+                    if USER_GREEN > 255 or USER_GREEN < 0:
+                        print('Вы ввели число вне диапазона от 0 до 255')
+                        continue
+                    else:
+                        break
+                while True:
+                    print('Введите значение от 0 до 255 для СИНЕГО:')
+                    USER_BLUE = int(input())
+                    if USER_BLUE > 255 or USER_BLUE < 0:
+                        print('Вы ввели число вне диапазона от 0 до 255')
+                        continue
+                    else:
+                        break
+                return [USER_RED, USER_GREEN, USER_BLUE]
+                break
+            elif color_choise.upper() == 'N':
+                return [75, 0, 130]
+                break
+            elif color_choise.upper() == 'R':
+                return [random.randint(0, 255),random.randint(0, 255),random.randint(0, 255)]
+                break
+            else:
+                print('не выбран ни один из вариантов') 
 
 # main
 if __name__ == '__main__':
@@ -177,58 +220,18 @@ if __name__ == '__main__':
 
 
     # Запрос Года
-    YEAR = YEAR_input()
+    YEAR = choose_year()
 
     # Запрос Изображения
     category_my_own = choose_category()
 
 
     # Запрос Цвета
-    while True:
-        print('''Введите <Y>, <N> или <R> 
-Если Вы хотите выбрать цвет календаря, то введите <Y>
-Если Вы хотите использовать цвет по умолчанию (Индиго: R-75, G-0, B-130), то введите <N>
-Если Вы хотите использовать случайный цвет, то введите <R>''')
-        color_choise = input()
-        print(color_choise)
-        if color_choise.upper() == 'Y':
-            while True:
-                print('Введите значение от 0 до 255 для КРАСНОГО:')
-                USER_RED = int(input())
-                if USER_RED > 255 or USER_RED < 0:
-                    print('Вы ввели число вне диапазона от 0 до 255')
-                    continue
-                else:
-                    break
-            while True:
-                print('Введите значение от 0 до 255 для ЗЕЛЕНОГО:')
-                USER_GREEN = int(input())
-                if USER_GREEN > 255 or USER_GREEN < 0:
-                    print('Вы ввели число вне диапазона от 0 до 255')
-                    continue
-                else:
-                    break
-            while True:
-                print('Введите значение от 0 до 255 для СИНЕГО:')
-                USER_BLUE = int(input())
-                if USER_BLUE > 255 or USER_BLUE < 0:
-                    print('Вы ввели число вне диапазона от 0 до 255')
-                    continue
-                else:
-                    break
-        elif color_choise.upper() == 'N':
-            USER_RED = 75
-            USER_GREEN = 0
-            USER_BLUE = 130
-            break
-        elif color_choise.upper() == 'R':
-            USER_RED = random.randint(0, 255)
-            USER_GREEN = random.randint(0, 255)
-            USER_BLUE = random.randint(0, 255)
-            break
-        else:
-            print('не выбран ни один из вариантов')
-
+    r_g_b = choose_color()
+    print(r_g_b)
+    USER_RED = r_g_b[0]
+    USER_GREEN = r_g_b[1]
+    USER_BLUE = r_g_b[2]
 
     try:
         print("Подбираем изображения...")
