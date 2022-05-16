@@ -47,9 +47,9 @@ D. Страница contacts.html
 	- Напишите мне (<h1>-<h6>)
 	- Форма (<form>)
 	- Поля формы:
-		имя: input --> name="first_name", type="text", id="first_name"
-		email: input --> name="email", type="email", id="email"
-		сообщение: textarea --> name="message", id="message"
-		кнопка: button --> type="submit", Отправить сообщение
+		+имя: input --> name="first_name", type="text", id="first_name"
+		+email: input --> name="email", type="email", id="email"
+		+сообщение: textarea --> name="message", id="message"
+		+кнопка: button --> type="submit", Отправить сообщение
 
-P.S. Не забудьте выложить проект на GitHub.
++P.S. Не забудьте выложить проект на GitHub.

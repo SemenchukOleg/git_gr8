@@ -17,19 +17,26 @@
 	<div>
     	<img src="https://st2.depositphotos.com/1758336/5895/i/600/depositphotos_58955513-stock-photo-empty-movie-theater-with-red.jpg" alt="Главная" height="500px">
 	</div>
-	<div style="color:orange">
-		<p>Имя: Николай</p>
-		<p>Город: Сочи</p>
-		<span style="color:green">
-			<p>По любым пожеланиям пишите на email:</p>
-		</span>
-		<p>Email: test@example.com</p>
+	<div style="color:grey;">
+		<h3>Напишите мне</h3>
 	</div>
-	<div>
-		<form action="mailto:vlad@htmlbook.ru" enctype="text/plain">
-	        <p><input type="input" value="Написать письмо"></p>
+	
+		<form action="" method="GET" >
+			<div>
+				<label for="first_name">Имя</label>
+		        <input type="text" id="first_name" placeholder="Введите имя"><br><br>
+
+		        <label for="email">E-mail</label>
+		        <input type="email" id="email" placeholder="Введите E-mail"><br><br>
+
+		        <label for="messedge">Сообщение</label>
+		        <textarea name="text" id="messedge" cols="40" rows="4"></textarea> <br><br>
+
+		        <label for="bottom">Отправить</label>
+		        <input type="submit" name="buttom"><br><br>
+	        </div>
 	    </form> 
-		
-	</div>
+	
+
 </body>
 </html>
