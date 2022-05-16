@@ -1,0 +1,19 @@
+#css-zen-garden {
+	background-color: #d4bbf2;
+}
+
+#zen-intro {
+	background-image: url("0b95ad03a6674ddc906fec97413ffbe3.png");
+	background-repeat: no-repeat;
+	background-position: 35% -47px;
+	background-color: white; 	
+	border-style: solid;
+}
+
+h1 {
+    font-family: 'Azeret Mono', monospace;
+	text-indent: 40%;
+    margin-top: 25px;
+    font-size: 3em;
+    color: rgb(28, 85, 255);
+}
