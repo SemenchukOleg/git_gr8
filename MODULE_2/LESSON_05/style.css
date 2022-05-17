@@ -3,14 +3,16 @@
 }
 
 #css-zen-garden {
-	background-color: #d4bbf2;
+	background-color: #d9c3b4;
+	margin: 0;
+	color: #1a120d;
 }
 
-#zen-intro {
+/*#zen-intro {
 	background-image: url("0b95ad03a6674ddc906fec97413ffbe3.png");
 	background-repeat: no-repeat;
 	background-position: left top;
-}
+}*/
 
 abbr[title = "Cascading Style Sheets"] {
 	border-bottom: none !important;
@@ -21,24 +23,35 @@ abbr[title = "Cascading Style Sheets"] {
 }
 
 h1 {
-    margin: inherit;
-    margin-left: 145px;
-    font-size: 2.5em;
-    color: rgb(28, 85, 255);
-    display: block;
-    background-color: white;
+    margin: auto;
+    border-bottom: 3px solid #4f2706;
+    background-color: #eae3d6;
+    text-align: center;
 }
 
 h2 {
 	margin-top: 5px;
-    border-top: 1px solid ;
-    text-align: center;
+    
+    text-align: left;
 }
 
 .summary {
-    background-color: lightgrey;
+    background-color: #a27250;
     width: 300px;
-    border: 15px solid green;
+    border-right: 3px solid #4f2706;
+    border-bottom: 3px solid #4f2706;
     padding: 50px;
-    margin: 20px;
+    position: relative;
+    left: 0px;
+}
+
+.preamble p {
+	background-color: #a27250;
+    width: 300px;
+    border-right: 3px solid #4f2706;
+    border-bottom: 3px solid #4f2706;
+    padding: 50px;
+    display: block;
+    position: relative;
+    right: 0px;
 }
