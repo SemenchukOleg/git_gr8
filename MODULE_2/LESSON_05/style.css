@@ -22,16 +22,34 @@ abbr[title = "Cascading Style Sheets"] {
 	text-shadow: 1px 1px 2px #000000
 }
 
+abbr[title="Document Object Model"] {
+	border-bottom: none !important;
+    cursor: inherit !important;
+    text-decoration: none !important;
+	color: #ada45f;
+	text-shadow: 1px 1px 2px #000000
+}
+
+abbr[title="HyperText Markup Language"] {
+	border-bottom: none !important;
+  cursor: inherit !important;
+  text-decoration: none !important;
+	color: #9a0b3e;
+	text-shadow: 1px 1px 2px #000000;
+}
+
 h1 {
-    margin: auto;
     border-bottom: 3px solid #4f2706;
     background-color: #eae3d6;
-    text-align: center;
+    text-align: center; 
+    margin-top: 0;
+    padding: 10px;
+  
 }
 
 h2 {
 	margin-top: 5px;
-    
+    padding-left: 10px;
     text-align: left;
 }
 
@@ -42,16 +60,71 @@ h2 {
     border-bottom: 3px solid #4f2706;
     padding: 50px;
     position: relative;
-    left: 0px;
+    left: 0;
+  border-top: 50px solid #fdf6ee;
 }
 
-.preamble p {
+.preamble {
+	background-color: #a27250;
+    width: 300px;
+    border-left: 3px solid #4f2706;
+    border-bottom: 3px solid #4f2706;
+    border-top: 50px solid #fdf6ee;
+    padding: 50px;
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: 0;
+  
+}
+ h3 {
+  display: block;
+  margin-top: -75px;
+}
+.explanation {
 	background-color: #a27250;
     width: 300px;
     border-right: 3px solid #4f2706;
     border-bottom: 3px solid #4f2706;
     padding: 50px;
+    position: relative;
+    left: 0;
+  border-top: 50px solid #fdf6ee;
+}
+
+.participation {
+	background-color: #a27250;
+    width: 300px;
+    border-left: 3px solid #4f2706;
+    border-bottom: 3px solid #4f2706;
+    padding: 50px;
     display: block;
     position: relative;
-    right: 0px;
+    margin-left: auto;
+    margin-right: 0;
+  border-top: 50px solid #fdf6ee;
+}
+
+.benefits {
+	background-color: #a27250;
+    width: 300px;
+    border-right: 3px solid #4f2706;
+    border-bottom: 3px solid #4f2706;
+    padding: 50px;
+    position: relative;
+    left: 0;
+  border-top: 50px solid #fdf6ee;
+}
+
+.requirements {
+	background-color: #a27250;
+    width: 300px;
+    border-left: 3px solid #4f2706;
+    border-bottom: 3px solid #4f2706;
+    padding: 50px;
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: 0;	
+  border-top: 50px solid #fdf6ee;
 }
