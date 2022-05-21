@@ -4,28 +4,23 @@
 
 #css-zen-garden {
 	background-color: #d9c3b4;
-	margin: 0;
+	margin:auto;
+  max-width: auto;
 	color: #1a120d;
 }
 
-/*#zen-intro {
-	background-image: url("0b95ad03a6674ddc906fec97413ffbe3.png");
-	background-repeat: no-repeat;
-	background-position: left top;
-}*/
-
 abbr[title = "Cascading Style Sheets"] {
 	border-bottom: none !important;
-    cursor: inherit !important;
-    text-decoration: none !important;
+  cursor: inherit !important;
+  text-decoration: none !important;
 	color: #de831b;
 	text-shadow: 1px 1px 2px #000000
 }
 
 abbr[title="Document Object Model"] {
 	border-bottom: none !important;
-    cursor: inherit !important;
-    text-decoration: none !important;
+  cursor: inherit !important;
+  text-decoration: none !important;
 	color: #ada45f;
 	text-shadow: 1px 1px 2px #000000
 }
@@ -37,6 +32,23 @@ abbr[title="HyperText Markup Language"] {
 	color: #9a0b3e;
 	text-shadow: 1px 1px 2px #000000;
 }
+
+abbr[title="World Wide Web Consortium"]{
+  border-bottom: none !important;
+  cursor: inherit !important;
+  text-decoration: none !important;
+	color: rgba(163,255,71,0.70);
+	text-shadow: 1px 1px 2px #000000;
+}
+
+abbr[title="Web Standards Project"] {
+  border-bottom: none !important;
+  cursor: inherit !important;
+  text-decoration: none !important;
+	color: rgba(163,255,71,0.70);
+	text-shadow: 1px 1px 2px #000000;
+}
+
 
 h1 {
     border-bottom: 3px solid #4f2706;
@@ -50,81 +62,97 @@ h1 {
 h2 {
 	margin-top: 5px;
     padding-left: 10px;
-    text-align: left;
+    text-align: center;
 }
 
-.summary {
-    background-color: #a27250;
-    width: 300px;
-    border-right: 3px solid #4f2706;
-    border-bottom: 3px solid #4f2706;
-    padding: 50px;
-    position: relative;
-    left: 0;
-  border-top: 50px solid #fdf6ee;
-}
-
-.preamble {
-	background-color: #a27250;
-    width: 300px;
-    border-left: 3px solid #4f2706;
-    border-bottom: 3px solid #4f2706;
-    border-top: 50px solid #fdf6ee;
-    padding: 50px;
-    display: block;
-    position: relative;
-    margin-left: auto;
-    margin-right: 0;
-  
-}
  h3 {
   display: block;
   margin-top: -75px;
 }
-.explanation {
-	background-color: #a27250;
-    width: 300px;
-    border-right: 3px solid #4f2706;
-    border-bottom: 3px solid #4f2706;
-    padding: 50px;
-    position: relative;
-    left: 0;
+
+a {
+  text-decoration: none;
+  color: #141d8f;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.summary {
+  text-align: center;
+}
+
+.explanation, .benefits {
+  background-color: #a27250;
+  width:  70%;
+  border-right: 3px solid #4f2706;
+  border-bottom: 3px solid #4f2706;
+  padding: 50px;
+  display: block;
+  position: relative;
+  left: 0;
   border-top: 50px solid #fdf6ee;
 }
 
-.participation {
+.preamble, .participation, .requirements{
 	background-color: #a27250;
-    width: 300px;
-    border-left: 3px solid #4f2706;
-    border-bottom: 3px solid #4f2706;
-    padding: 50px;
-    display: block;
-    position: relative;
-    margin-left: auto;
-    margin-right: 0;
+  width: 70%;
+  border-left: 3px solid #4f2706;
+  border-bottom: 3px solid #4f2706;
   border-top: 50px solid #fdf6ee;
+  padding: 50px;
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: 0;
 }
 
-.benefits {
-	background-color: #a27250;
-    width: 300px;
-    border-right: 3px solid #4f2706;
-    border-bottom: 3px solid #4f2706;
-    padding: 50px;
-    position: relative;
-    left: 0;
-  border-top: 50px solid #fdf6ee;
+aside{
+  background-color: #fdf6ee;
+  padding-left: 10px;
 }
 
-.requirements {
-	background-color: #a27250;
-    width: 300px;
-    border-left: 3px solid #4f2706;
-    border-bottom: 3px solid #4f2706;
-    padding: 50px;
-    display: block;
-    position: relative;
-    margin-left: auto;
-    margin-right: 0;	
-  border-top: 50px solid #fdf6ee;
+li {
+  padding: 1px;
+}
+
+ul {
+  display: inline-block;
+  list-style-type: none;
+  
+  
+}
+
+footer {
+  display:  block;
+  position: relative;
+  text-align: center; 
+  background-color: #fdf6ee;
+  width: auto;
+  height: auto;
+  
+}
+
+footer > a {
+  text-decoration: none;
+  font-size: 5.5vw;
+  font-weight: 900;
+  letter-spacing: -2px;
+  padding-left: 1%;
+  color: #d21e87;
+  transition: 0.5s ease;
+}
+
+footer > a:hover {
+  color: #691ed2;
+  transition: 0.5s ease;
+  text-decoration: none;
+}
+
+.sidebar h3 {
+  display:  block;
+  position: relative;
+  margin:0;
 }
