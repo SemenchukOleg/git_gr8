@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DoIT App | Task Edit</title>
+
+	 <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	
+</head>
+<body>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light ">
+	  
+      <a class="navbar-brand " href="start_template_edit.html">
+        <img src="./img1/logo_transparent.png" width="60" height="60" class="d-inline-block align-top" alt="holder" >
+      </a>
+	  
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item ">
+	        <a class="nav-link" href="#">Home</a>
+	      </li>
+	      <li class="nav-item ">
+	        <a class="nav-link" href="#">Profile</a>
+	      </li>
+	    </ul>
+	    <form class="form-inline my-2 my-lg-0">
+	      <span class="font-weight-normal text-info align-middle" style="padding-right: 5px;" >login@gmail.com</span>
+	      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">LogIn</button>
+	    </form>
+	  </div>
+	</nav>
+	<!-- End Navbar -->
+<div class="conteiner bg-secondary text-white" id="main" >
+	<!-- Notifications -->
+	<div class="mx-auto" style="max-width: 77%;" >
+		<div class="alert alert-info" role="alert">
+	        <strong> Notification </strong> An error was accured! (error message)
+	    </div>
+	</div>
+	<!-- End Notifications -->
+
+	<!-- Header -->
+	<div id="header" >
+		<img src="https://images.wallpaperscraft.ru/image/single/fon_nebo_tochki_svet_83482_1152x864.jpg" class="mx-auto d-block rounded" style="max-width: 77%;" alt="todos_img">
+	</div>
+	<!-- End Header -->
+
+	<!-- Task Edit Form -->
+	<div id="task-form-block" >
+		
+		<form class="mx-auto" style="max-width: 77%;">
+		  <div class="form-row">
+		    <div class="form-group col-md-4">
+		      <label for="inputTask">Title</label>
+		      <input type="textarea" class="form-control" id="inputTask" placeholder="title of task">
+		    
+		      <label for="formChoose">Priority</label>
+		      <select name="cars" class="form-control" id="formChoose">
+			    <option value="Value 1">Value 1</option>
+			    <option value="Value 2">Value 2</option>
+			    <option value="Value 3">Value 3</option>
+			  </select>
+		    </div>
+		    
+		    <div class="form-group col-md-6">
+		      <label for="descriptionOfTask">Task</label>
+		      <textarea class="form-control" id="descriptionOfTask" placeholder="description of task" rows="4"></textarea> 
+		    </div>
+		  </div>
+		  <button type="submit" class="btn btn-primary " >Sign in</button>
+		</form>
+	</div>
+
+	<!-- End Task Form -->
+
+</div>
+	<!-- Footer -->
+	<div id="footer">
+		<footer class="page-footer font-small blue pt-4">
+
+		  <!-- Footer Links -->
+		  <div class="container-fluid text-center text-md-left">
+
+		    <!-- Grid row -->
+		    <div class="row">
+
+		      <!-- Grid column -->
+		      <div class="col-md-6 mt-md-0 mt-3">
+
+		        <!-- Content -->
+		        <h5 class="text-uppercase">Footer Content</h5>
+		        <p>Here you can use rows and columns to organize your footer content.</p>
+
+		      </div>
+
+		    </div>
+		    <!-- Grid row -->
+
+		  </div>
+		  <!-- Footer Links -->
+
+		  <!-- Copyright -->
+		  <div class="footer-copyright text-center py-3">© 2022 Copyright:
+		    <a href="/"> @SemenchukOleg</a>
+		  </div>
+		  <!-- Copyright -->
+
+		</footer>
+	</div>
+	<!-- End Footer -->
+</body>
+</html>
