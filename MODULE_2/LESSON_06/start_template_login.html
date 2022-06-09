@@ -33,55 +33,56 @@
 	    </ul>
 	    <form class="form-inline my-2 my-lg-0">
 	      <span class="font-weight-normal text-info align-middle" style="padding-right: 5px;" >login@gmail.com</span>
-	      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">LogIn</button>
+	      
 	    </form>
 	  </div>
 	</nav>
 	<!-- End Navbar -->
-	<div class="conteiner bg-secondary text-white" id="main" >
+	<div class="conteiner bg-secondary text-white " id="main" style="height: 77vh;">
 		<!-- Notifications -->
 		<div class="mx-auto" style="max-width: 77%;" >
-			<div class="alert alert-info" role="alert">
-		        <strong> Notification </strong> An error was accured! (error message)
+			<div class="alert alert-danger" role="alert">
+		        <strong> Notification </strong> password is not correct!
 		    </div>
 		</div>
 		<!-- End Notifications -->
-
+        <div id="main-content" class="row">
 		<!-- Header -->
-		<div id="header" >
-			<img src="https://images.wallpaperscraft.ru/image/single/fon_nebo_tochki_svet_83482_1152x864.jpg" class="mx-auto d-block rounded" style="max-width: 40%;" alt="todos_img">
+			<div id="header" class="col-6 " >
+				<img src="./todos_app_layout/img1/logo_transparent.png" class="mx-auto d-block rounded col-6"  alt="todos_img">
+			</div>
+			<!-- End Header -->
+
+			<!-- Login Form -->
+			<div id="login-form-block" class="col-4 ">
+				<form >
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">Email address</label>
+				    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+				    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputPassword1">Password</label>
+				    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+				  </div>
+				  <div class="form-check">
+				    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+				    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+				  </div>
+				  
+				  
+				  
+				</form>
+				<button type="button" class="btn btn-primary btn-lg">login</button>
+				<button type="button" class="btn btn-dark ">registration</button>
+			</div>
+			<!-- End Login Form -->
+
 		</div>
-		<!-- End Header -->
 
-		<!-- Task Edit Form -->
-		<div id="task-form-block" >
-			
-			<form class="mx-auto" style="max-width: 77%;">
-			  <div class="form-row">
-			    <div class="form-group col-md-4">
-			      <label for="inputTask">Title</label>
-			      <input type="textarea" class="form-control" id="inputTask" placeholder="title of task">
-			    
-			      <label for="formChoose">Priority</label>
-			      <select name="cars" class="form-control" id="formChoose">
-				    <option value="Value 1">Value 1</option>
-				    <option value="Value 2">Value 2</option>
-				    <option value="Value 3">Value 3</option>
-				  </select>
-			    </div>
-			    
-			    <div class="form-group col-md-6">
-			      <label for="descriptionOfTask">Task</label>
-			      <textarea class="form-control" id="descriptionOfTask" placeholder="description of task" rows="4"></textarea> 
-			    </div>
-			  </div>
-			  <button type="submit" class="btn btn-primary " >Sign in</button>
-			</form>
-		</div>
-
-		<!-- End Task Form -->
-
-	</div>
+	</div>	
+	
+        
 	<!-- Footer -->
 	<div id="footer">
 		<footer class="page-footer font-small blue pt-4">
@@ -108,7 +109,7 @@
 		  <!-- Footer Links -->
 
 		  <!-- Copyright -->
-		  <div class="footer-copyright text-center py-3">© 2022 Copyright:
+		  <div class="footer-copyright text-center py-3" style="max-height: 50px;">© 2022 Copyright:
 		    <a href="/"> @SemenchukOleg</a>
 		  </div>
 		  <!-- Copyright -->
