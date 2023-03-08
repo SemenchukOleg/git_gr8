@@ -1,0 +1,110 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %} home {% endblock title %}
+{% block content %}
+{% include 'partials/_header.html' %}
+    <!-- Task Edit Form -->
+    <div id="task-form-block" >
+        
+        <form class="mx-auto" style="max-width: 77%;">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+            <label for="inputTask">Title</label>
+            <input type="textarea" class="form-control" id="inputTask" placeholder="title of task">
+            
+            <label for="formChoose">Priority</label>
+            <select name="cars" class="form-control" id="formChoose">
+                <option value="Value 1">Value 1</option>
+                <option value="Value 2">Value 2</option>
+                <option value="Value 3">Value 3</option>
+            </select>
+            </div>
+            
+            <div class="form-group col-md-6">
+            <label for="descriptionOfTask">Task</label>
+            <textarea class="form-control" id="descriptionOfTask" placeholder="description of task" rows="4"></textarea> 
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary " >Sign in</button>
+        </form>
+    </div>
+    <!-- End Task Form -->
+
+      <!-- cards -->
+    <div class="cardContainer container mx-auto  " style="max-width: 77%; margin-top: 15px ;">
+
+        <h4 class="text-warning" >Active task</h4>
+        <div class="activeTask row mx-auto">
+                <div class=" card  border-warning" style="margin-left:15px;">
+                    <div class="card-header ">Header</div>
+                    <div class="card-body ">Content</div>
+                    <div class="btn-group ">
+                        <button type="button" class="btn btn-primary w-100">edit</button>
+                        <button type="button" class="btn btn-success ">complite</button>
+                        <button type="button" class="btn btn-danger ">delete</button>
+                    </div>
+                </div>
+                <div class="card border-warning " style="margin-left:15px;">
+                    <div class="card-header ">Header</div>
+                    <div class="card-body">Content</div>
+                    <div class="btn-group   ">
+                        <button type="button" class="btn btn-primary ">edit</button>
+                        <button type="button" class="btn btn-success ">complite</button>
+                        <button type="button" class="btn btn-danger ">delete</button>
+                    </div>
+                </div>
+                <div class="card border-warning" style="margin-left:15px;">
+                    <div class="card-header ">Header</div>
+                    <div class="card-body">Content</div>
+                    <div class="btn-group   ">
+                        <button type="button" class="btn btn-primary">edit</button>
+                        <button type="button" class="btn btn-success ">complite</button>
+                        <button type="button" class="btn btn-danger ">delete</button>
+                    </div>
+                </div>
+      </div>	
+      <div class="between" style="height: 15px;"></div>
+      <div class="clearfix">
+            <button type="button" class="btn btn-success float-left">complite all</button>
+            <button type="button" class="btn btn-danger float-right" style="margin-right: 40%">delete all</button>
+          </div>
+          <div class="between" style="height: 15px;"></div>
+
+      <h4 class="text-success">Complited task</h4>
+          <div class="completeTask row mx-auto" > 
+                <div class="card border-success" style="margin-left:15px;">
+                    <div class="card-header ">Header</div>
+                    <div class="card-body">Content</div>
+                    <div class="btn-group   ">
+                        <button type="button" class="btn btn-primary ">edit</button>
+                        <button type="button" class="btn btn-success ">complite</button>
+                        <button type="button" class="btn btn-danger ">delete</button>
+                    </div>
+              </div>	
+              <div class="card border-success" style="margin-left:15px;">
+                    <div class="card-header ">Header</div>
+                    <div class="card-body">Content</div>
+                    <div class="btn-group   ">
+                        <button type="button" class="btn btn-primary ">edit</button>
+                        <button type="button" class="btn btn-success ">complite</button>
+                        <button type="button" class="btn btn-danger ">delete</button>
+                    </div>
+              </div>	
+              <div class="card border-success" style="margin-left:15px;">
+                    <div class="card-header ">Header</div>
+                    <div class="card-body">Content</div>
+                    <div class="btn-group   ">
+                        <button type="button" class="btn btn-primary ">edit</button>
+                        <button type="button" class="btn btn-success ">complite</button>
+                        <button type="button" class="btn btn-danger ">delete</button>
+                    </div>
+              </div>	
+        </div>
+        <div class="between" style="height: 15px;"></div>
+        <div class="clearfix">
+              <button type="button" class="btn btn-danger float-left">delete all</button>
+          </div>
+    
+    </div>
+<!-- End cards -->
+{% endblock content %}
