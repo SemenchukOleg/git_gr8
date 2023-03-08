@@ -1,0 +1,43 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %} profile page {% endblock title %}
+{% block content %}
+{% include 'partials/_header.html' %}
+
+<!-- Profile Form -->
+<div class="container">            
+	<table class="table table-borderless">
+	<thead>
+		<tr>
+		<th>Profile</th>
+		<th>Username</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+		<td>Full name:</td>
+		<td>Name Lastname</td>
+		</tr>
+		<tr>
+		<td>Email:</td>
+		<td>mary@example.com</td>
+		</tr>
+		<tr>
+		<td>Register at:</td>
+		<td>01.01.2000</td>
+		</tr>
+		<tr class="table-warning">
+		<td>Active task:</td>
+		<td>1</td>
+		</tr>
+		<tr class="table-success">
+		<td>Complite task:</td>
+		<td>1</td>
+		</tr>
+	</tbody>
+	</table>
+</div>
+
+<!-- End Profile Form -->
+
+{% endblock content %}
