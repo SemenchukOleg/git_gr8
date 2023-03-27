@@ -3,107 +3,100 @@
 {% block title %} home {% endblock title %}
 {% block content %}
 {% include 'partials/_header.html' %}
+
     <!-- Task Edit Form -->
     <div id="task-form-block" >
         
-        <form class="mx-auto" style="max-width: 77%;">
+        <form action="{% url 'create_task' %}" method="POST" class="mx-auto" style="max-width: 77%;">
+        {% csrf_token %}
         <div class="form-row">
             <div class="form-group col-md-4">
             <label for="inputTask">Title</label>
-            <input type="textarea" class="form-control" id="inputTask" placeholder="title of task">
+            <input type="textarea" class="form-control" id="title" name="title" placeholder="title of task" required>
             
-            <label for="formChoose">Priority</label>
-            <select name="cars" class="form-control" id="formChoose">
-                <option value="Value 1">Value 1</option>
-                <option value="Value 2">Value 2</option>
-                <option value="Value 3">Value 3</option>
+            <label for="priority">Priority</label>
+            <select name="priority" class="form-control" id="priority">
+                <option value="No priority">No priority</option>
+                <option value="Low">Low priority</option>
+                <option value="Medium">Medium priority</option>
+                <option value="High">High priority</option>
             </select>
             </div>
             
             <div class="form-group col-md-6">
             <label for="descriptionOfTask">Task</label>
-            <textarea class="form-control" id="descriptionOfTask" placeholder="description of task" rows="4"></textarea> 
+            <textarea name="description" class="form-control" id="description" placeholder="Describe your task
+            here" rows="4" required ></textarea> 
             </div>
         </div>
-        <button type="submit" class="btn btn-primary " >Sign in</button>
+        <button type="submit" class="btn btn-primary " >Create task</button>
         </form>
     </div>
     <!-- End Task Form -->
 
       <!-- cards -->
-    <div class="cardContainer container mx-auto  " style="max-width: 77%; margin-top: 15px ;">
+    <div class="cardContainer container mx-auto  " style=" margin-top: 15px ;">
 
         <h4 class="text-warning" >Active task</h4>
-        <div class="activeTask row mx-auto">
-                <div class=" card  border-warning" style="margin-left:15px;">
-                    <div class="card-header ">Header</div>
-                    <div class="card-body ">Content</div>
-                    <div class="btn-group ">
-                        <button type="button" class="btn btn-primary w-100">edit</button>
-                        <button type="button" class="btn btn-success ">complite</button>
-                        <button type="button" class="btn btn-danger ">delete</button>
-                    </div>
+        <div class="activeTask row mx-auto ">
+        {% for task in tasks %}
+            {% if not task.is_completed %}
+            <div class="card border-warning my-3" style="margin-left:15px; width: 320px">
+                <div class="card-header ">{% if task.priority == 'No priority' %}
+                    <span class="badge badge-secondary">{{ task.priority }}</span>
+                    {% elif task.priority == 'Low' %}
+                    <span class="badge badge-success">{{ task.priority }}</span>
+                    {% elif task.priority == 'Medium' %}
+                    <span class="badge badge-warning">{{ task.priority }}</span>
+                    {% elif task.priority == 'High' %}
+                    <span class="badge badge-danger">{{ task.priority }}</span>
+                    {% endif %}</div>
+                <div class="card-body " >
+                    <h5> {{task.title}} </h5>
+                    <p style="min-height: 100px;">{{task.description}}</p>
+                    
+                    <a href="{% url 'edit_task' task.id %}" class="btn btn-outline-warning btn-block mb-1">edit </a>
+                    <a href="{% url 'complete_task' task.id %}" class="btn btn-outline-success btn-block mb-1">Complete </a>
+                    <a href="{% url 'delete_task' task.id %}" class="btn btn-outline-danger btn-block mb-1">Delete </a>
                 </div>
-                <div class="card border-warning " style="margin-left:15px;">
-                    <div class="card-header ">Header</div>
-                    <div class="card-body">Content</div>
-                    <div class="btn-group   ">
-                        <button type="button" class="btn btn-primary ">edit</button>
-                        <button type="button" class="btn btn-success ">complite</button>
-                        <button type="button" class="btn btn-danger ">delete</button>
-                    </div>
-                </div>
-                <div class="card border-warning" style="margin-left:15px;">
-                    <div class="card-header ">Header</div>
-                    <div class="card-body">Content</div>
-                    <div class="btn-group   ">
-                        <button type="button" class="btn btn-primary">edit</button>
-                        <button type="button" class="btn btn-success ">complite</button>
-                        <button type="button" class="btn btn-danger ">delete</button>
-                    </div>
-                </div>
-      </div>	
+            </div>
+            {% endif %}
+        {% endfor %}
+        </div>	
       <div class="between" style="height: 15px;"></div>
-      <div class="clearfix">
-            <button type="button" class="btn btn-success float-left">complite all</button>
-            <button type="button" class="btn btn-danger float-right" style="margin-right: 40%">delete all</button>
-          </div>
-          <div class="between" style="height: 15px;"></div>
+      <div class="row justify-content-center">
+        <a href="{% url 'complete_all_tasks' %}" class="btn btn-success mr-1">Complete all</a>
+        <a href="{% url 'delete_all_tasks' %}" class="btn btn-danger mr-1">Delete all</a>
+        </div>
 
       <h4 class="text-success">Complited task</h4>
           <div class="completeTask row mx-auto" > 
-                <div class="card border-success" style="margin-left:15px;">
-                    <div class="card-header ">Header</div>
-                    <div class="card-body">Content</div>
-                    <div class="btn-group   ">
-                        <button type="button" class="btn btn-primary ">edit</button>
-                        <button type="button" class="btn btn-success ">complite</button>
-                        <button type="button" class="btn btn-danger ">delete</button>
+            {% for task in tasks %}
+                {% if task.is_completed %}
+                <div class="card border-success" style="margin-left:15px ; width: 320px">
+                    <div class="card-header ">{% if task.priority == 'No priority' %}
+                        <span class="badge badge-secondary">{{ task.priority }}</span>
+                        {% elif task.priority == 'Low' %}
+                        <span class="badge badge-success">{{ task.priority }}</span>
+                        {% elif task.priority == 'Medium' %}
+                        <span class="badge badge-warning">{{ task.priority }}</span>
+                        {% elif task.priority == 'High' %}
+                        <span class="badge badge-danger">{{ task.priority }}</span>
+                        {% endif %}</div>
+                    <div class="card-body">
+                        <h5> {{task.title}} </h5>
+                        <p style="min-height: 100px;">{{task.description}}</p>
+                        <a href="{% url 'complete_task' task.id %}" class="btn btn-outline-success btn-block mb-1">Uncomplite </a>
+                        <a href="{% url 'delete_task' task.id %}" class="btn btn-outline-danger btn-block mb-1">Delete </a>             
                     </div>
-              </div>	
-              <div class="card border-success" style="margin-left:15px;">
-                    <div class="card-header ">Header</div>
-                    <div class="card-body">Content</div>
-                    <div class="btn-group   ">
-                        <button type="button" class="btn btn-primary ">edit</button>
-                        <button type="button" class="btn btn-success ">complite</button>
-                        <button type="button" class="btn btn-danger ">delete</button>
-                    </div>
-              </div>	
-              <div class="card border-success" style="margin-left:15px;">
-                    <div class="card-header ">Header</div>
-                    <div class="card-body">Content</div>
-                    <div class="btn-group   ">
-                        <button type="button" class="btn btn-primary ">edit</button>
-                        <button type="button" class="btn btn-success ">complite</button>
-                        <button type="button" class="btn btn-danger ">delete</button>
-                    </div>
-              </div>	
+                </div> 
+                {% endif %}
+            {% endfor %}	
         </div>
         <div class="between" style="height: 15px;"></div>
-        <div class="clearfix">
-              <button type="button" class="btn btn-danger float-left">delete all</button>
-          </div>
+        <div class="row justify-content-center">
+            <a href="{% url 'delete_all_complete_tasks' %}" class="btn btn-danger mr-1">Delete all</a>
+            </div>
     
     </div>
 <!-- End cards -->

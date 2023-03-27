@@ -128,6 +128,15 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+# Messages
+
+MESSAGE_TAGS = {
+20: 'info',
+25: 'success',
+30: 'warning',
+40: 'danger',
+}
+
 # Load local_settings.py
 try:
     from todoitproject.local_settings import *
