@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} REGISTER {% endblock title %}
+{% block content %}
+<!-- Login Form -->
+<div id="login-form-block" class="col-4 mx-auto text-center ">
+    <form action="{% url 'register' %}" method="POST" >
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <h1 class="text-center">Registration form</h1>
+            <input type="username" name="username" class="form-control" id="validationDefault01" aria-describedby="emailHelp" placeholder="Enter username">
+        </div>
+        <div class="form-group">				
+            <input type="email" name="email" class="form-control" id="validationDefault02" placeholder="e-mail">
+        </div>
+        <div class="form-group">
+            <input type="first_name" name="first_name" class="form-control" id="validationDefault03" placeholder="first name">
+        </div>
+        <div class="form-group">
+            <input type="last_name" name="last_name" class="form-control" id="validationDefault04" placeholder="last name">
+        </div>
+        <div class="form-group">
+            <input type="password" name="password"  class="form-control" id="validationDefault05" placeholder="password">
+        </div>
+        <div class="form-group">
+            <input type="password" name="password1" class="form-control" id="validationDefault06" placeholder="repeat password">
+        </div>
+        
+        
+        <button type="submit" class="btn btn-outline-primary btn-lg " >Registration NOW</button>
+    </form>
+    
+    <h5 class="m-2">If you are already registered </h5>
+    <a type="button" class="btn btn-dark btn-sm" href="{% url 'login' %}">Sing in</a>
+</div>
+<!-- End Login Form -->
+
+{% endblock content %}

@@ -1,28 +1,30 @@
 {% load static %}
+{% if user.is_authenticated %}
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light ">
+<nav class="navbar navbar-expand-sm navbar-light ">
 	  
-    <a class="navbar-brand " href="start_template_edit.html">
+    <a class="navbar-brand " href="/">
       <img src="{% static './todos_app_layout/img1/logo_transparent.png' %}" width="60" height="60" class="d-inline-block align-top" alt="holder" >
     </a>
     
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="start_template_index.html">Home</a>
+          <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="start_template_profile.html">Profile</a>
+          <a class="nav-link" href="{% url 'profile' %}">Profile</a>
         </li>
       </ul>
+      
       <form class="form-inline my-2 my-lg-0">
-        <span class="font-weight-normal text-info align-middle" style="padding-right: 5px;" >login@gmail.com</span>
-        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">LogIn</button>
+        <span class="font-weight-normal text-info align-middle" style="padding-right: 5px;" >@{{ user.get_username }}</span>  
+        <a class="btn btn-outline-info my-2 my-sm-0" type="submit" href="{% url 'logout' %}">Logout</a>
       </form>
+      
     </div>
  </nav>
 <!-- End Navbar -->
+{% endif %} 

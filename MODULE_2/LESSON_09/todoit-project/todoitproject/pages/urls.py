@@ -10,4 +10,5 @@ urlpatterns = [
     path('delete_all_complete_tasks/', views.delete_all_complete_tasks, name='delete_all_complete_tasks'),
     path('delete_all_tasks/', views.delete_all_tasks, name='delete_all_tasks'),
     path('edit_task/<int:task_id>', views.edit_task, name='edit_task'),
+    path('profile/', views.profile, name='profile'),
     ]
