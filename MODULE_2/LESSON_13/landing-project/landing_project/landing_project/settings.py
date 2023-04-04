@@ -22,11 +22,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'place your key here!'
 
-# Load local_settings.py
+# Load local_setting.py
 try:
     from landing_project.local_setting import *
 except ModuleNotFoundError:
-    print("Модуль local_settings.py не найден")
+    print("Модуль local_setting.py не найден")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
