@@ -143,3 +143,12 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'blogitproject/static')]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Messages
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    20: 'info',
+    25: 'success',
+    30: 'warning',
+    40: 'danger',
+}
