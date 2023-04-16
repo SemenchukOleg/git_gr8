@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} EDIT PROFILE {% endblock title %}
+
+{% block content %}
+<div class="hero-wrap" style="background-image: url('https://images.unsplash.com/photo-1621684793835-1dfa38971adb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+        <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+           <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="_index.html">Home</a></span> <span>Login</span></p>
+          <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">EDIT PROFILE</h1>
+
+            <!-- Notifications -->
+            {% include 'partials/_alerts.html' %}
+            <!-- End Notifications -->
+            
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <section class="ftco-section-3 img" style="background-image: url(https://images.unsplash.com/photo-1518811829466-1372392d4544?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2865&q=80);">
+    
+    <div class="overlay"></div>
+    <section class=" ftco-degree-bg">
+      <div class="container">
+          <div class="col-md-12 ftco-animate">
+            <!-- Profile -->
+            <div class="container">
+              <div class="about-author d-flex p-5 ">
+                <div class="col-md-6 mr-5">
+                  <img src="{{profile.profile_image_thumbnail.url}}" alt="Image placeholder" class="img-fluid mb-4">
+                  <div class="meta mb-3">
+                    <div><span class="icon-calendar"></span> July 12, 2018</div>
+                    <div class="d-flex justify-content-start">
+                      <div class="mr-3"><span class="icon-list"></span> 99</div>
+                        <div class="mr-3"><span class="icon-chat"></span> 19</div>
+                        <div class="mr-3"><span class="icon-heart"></span> 10</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <h3>@{{ profile.user.username }}</h3>
+                  <p class="text-muted small">{{profile.status}}</p>
+                  <p>{{profile.about}}</p>
+                  <!-- <ul>
+                    <li>Firstname: Nick</li>
+                    <li>Lastname: Jones</li>
+                  </ul> -->
+                  <div class="sort-by">
+                    <li>Firstname: {{profile.user.first_name}}</li>
+                    <li>Lastname: {{profile.user.last_name}}</li>
+                    <li></li>
+                  </div>
+                  {% if user.id == profile.user.id %}
+                  <a href="{% url 'edit_user_profile' profile.user.username %}" class="btn btn-primary py-3 px-5">Edit profile</a>
+                  {% endif %}
+    
+                </div>
+              </div>
+            </div>
+            <!-- End Profile -->
+
+      <div class="container">
+        <div class="row d-md-flex">
+        <div class="col-md-6 d-flex ftco-animate fadeInUp ftco-animated">
+          <div class="img img-2 align-self-stretch" style="background-image: url(https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2827&q=80);"></div>
+        </div>
+      
+      
+
+      <div class="col-md-6 volunteer pl-md-5 ftco-animate fadeInUp ftco-animated">
+        
+        <h3 class="mb-3">Edit profile</h3>
+        <form action="{% url 'edit_user_profile' profile.user.username %}" class="volunter-form needs-validation" method="POST" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
+
+          <div class="form-group">
+            <input name="username" type="text" class="form-control" placeholder="{{ user.get_username }}" readonly>
+          </div>
+          <div class="form-group">
+            <input name="email" type="email" class="form-control" placeholder="{{ profile.user.email }}" readonly>
+          </div>
+          <div class="form-group">
+            <input name="first_name" type="text" class="form-control" placeholder="{{ profile.user.first_name }}" >
+          </div>
+          <div class="form-group">
+            <input name="last_name" type="text" class="form-control" placeholder="{{ profile.user.last_name }}" >
+          </div>
+          <div class="form-group">
+            <input name="status" type="text" class="form-control" placeholder="{{ profile.status }}" >
+          </div>
+          <div class="form-group">
+            <textarea name="about" type="text" class="form-control" placeholder="{{ profile.about }}" rows="10" ></textarea>
+          </div>
+          <div class="form-group">
+            <input type="file" name="profile_image" class="form-control-file" id="exampleFormControlFile1">
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-block btn-warning py-3 px-5">Edit</button>
+          </div>
+        </form>
+        <div class="text-center mb-2">
+            <span><strong>OR</strong></span>
+          </div>
+          <div class="text-center">
+              <a href="{% url 'get_user_profile' user.get_username %}" class="btn btn-block btn-white py-3 px-5">Cansel</a>
+        </div>
+      </div>          
+      </div>
+    </div>
+  </section> <!-- .section -->
+{% endblock content %}

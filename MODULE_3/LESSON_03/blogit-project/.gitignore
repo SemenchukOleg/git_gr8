@@ -1,0 +1,16 @@
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+blogitpraject/media/*
+blogitpraject/static/*
+blogit_venv/
+.DS_Store
+.vscode
+*.pid
+*.db
+*.rdb
+*.sqlite3
