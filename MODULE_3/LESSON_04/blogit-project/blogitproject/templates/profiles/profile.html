@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %} PROFILE {% endblock title %}
+
+{% block content %}
+
+<div class="hero-wrap" style="background-image: url('https://images.unsplash.com/photo-1612311533219-3687fcf1ee78?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2840&q=80');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+        <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+           <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/">Home</a></span> <span>Profile</span></p>
+          <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">@{{ profile.user.username }}  <span class="text-warning">profile</span></h1>
+
+          <!-- Notifications -->
+          {% include 'partials/_alerts.html' %}
+          <!-- End Notifications -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="ftco-section ftco-degree-bg">
+    <div class="container">
+        <div class="col-md-12 ftco-animate">
+
+          <!-- Profile -->
+          <div class="about-author d-flex p-5 bg-light">
+            <div class="col-md-6 mr-5">
+              <img src="{% thumbnail profile.profile_image 200x200 crop upscale %}" alt="Image placeholder" class="img-fluid mb-4">
+              <div class="meta mb-3">
+                <div><span class="icon-calendar"></span> July 12, 2018</div>
+                <div class="d-flex justify-content-start">
+                   <div class="mr-3"><span class="icon-list"></span> 99</div>
+                    <div class="mr-3"><span class="icon-chat"></span> 19</div>
+                    <div class="mr-3"><span class="icon-heart"></span> 10</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h3>@{{ profile.user.username }}</h3>
+              <p class="text-muted small">{{profile.status}}</p>
+              <p>{{profile.about}}</p>
+              <!-- <ul>
+                <li>Firstname: Nick</li>
+                <li>Lastname: Jones</li>
+              </ul> -->
+              <div class="sort-by">
+                <li>Firstname: {{profile.user.first_name}}</li>
+                <li>Lastname: {{profile.user.last_name}}</li>
+                <li></li>
+              </div>
+              {% if user.id == profile.user.id %}
+              <a href="{% url 'edit_user_profile' profile.user.username %}" class="btn btn-primary py-3 px-5">Edit profile</a>
+              {% endif %}
+
+            </div>
+          </div>
+          <!-- End Profile -->
+
+          <!-- Single blog -->
+          <h2 class="my-5">@username blogs</h2>
+          <div class="row d-flex">
+            <div class="col-md-4 d-flex ftco-animate">
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url({% static 'images/image_1.jpg' %});"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts. Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+                  </div>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                    <div><a href="#"><span class="icon-heart"></span> 10</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            </div>
+          <!-- End Single blog -->
+
+          <!-- Pagination -->
+          <div class="row mt-5">
+            <div class="col text-center">
+              <div class="block-27">
+                <ul>
+                  <li><a href="#">&lt;</a></li>
+                  <li class="active"><span>1</span></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                  <li><a href="#">&gt;</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- End Pagination -->
+        </div> <!-- .col-md-12 -->
+    </div> <!-- .conteiner -->
+  </section> <!-- .section -->
+{% endblock content %}
