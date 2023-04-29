@@ -44,13 +44,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'easy_thumbnails',
+    'taggit',    
+
     'pages',   #install pages app
     'accounts',    #install pages app
     'profiles',    #install profiles app
     'comments',    #install comments app
     'blogs',    #install blogs app
 
-    'easy_thumbnails',
 ]
 
 MIDDLEWARE = [
@@ -165,3 +167,6 @@ MESSAGE_TAGS = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#taggit
+TAGGIT_CASE_INSENSITIVE = True

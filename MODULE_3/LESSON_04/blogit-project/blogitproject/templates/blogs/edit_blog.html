@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Edit blog {% endblock title %}
+
+{% block content %}
+<div class="hero-wrap" style="background-image: url('https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+        <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+           <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/">Home</a></span> <span>Edit blog</span></p>
+          <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="text-warning">Edit Blog</span></h1>
+          <div>
+            {% include 'partials/_alerts.html' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="ftco-section ftco-degree-bg">
+    <div class="container">
+        <div class="col-md-12 ftco-animate">
+
+          <section class="ftco-section-3 img" style="background-image: url(https://images.unsplash.com/photo-1518811829466-1372392d4544?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2865&q=80);">
+            <div class="overlay"></div>
+            <div class="container">
+              <div class="row d-md-flex">
+              <div class="col-md-6 d-flex ftco-animate fadeInUp ftco-animated">
+                <div class="img img-2 align-self-stretch" style="background-image: url({{blog.image.url}});"></div>
+              </div>
+              <div class="col-md-6 volunteer pl-md-5 ftco-animate fadeInUp ftco-animated">
+                <h3 class="mb-3">Edit blog</h3>
+                <form action="#" class="volunter-form needs-validation" enctype="multipart/form-data" method="POST" novalidate>
+                    {% csrf_token %}
+                  <div class="form-group">
+                    <input name="title" type="text" class="form-control" placeholder="Title" autocomplete="off" value="{{blog.title}}" required>
+                    <div class="invalid-feedback" style="color: lime;">
+                        Please create a title.
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <select name="category" class="form-control" required>
+                        {% for category in categories %}
+                        {% if category == blog.category %}
+                        <option value="{{category}}" selected choosen>{{category}}</option>
+                        {% else %}
+                        <option value="{{category}}">{{category}}</option>
+                        {% endif %}
+                        {% endfor %}
+                      </select>
+                      <div class="invalid-feedback" style="color: lime;">
+                        Please choose a category.
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <textarea name="text" cols="30" rows="10" class="form-control" placeholder="Blog text" required>{{blog.text}}</textarea>
+                    <div class="invalid-feedback" style="color: lime;">
+                        Please write something.
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input name="image" type="file" class="form-control" placeholder="Blog Image" autocomplete="off">
+                  </div>
+                  <div class="form-group">
+                    <textarea name="tags" cols="30" rows="3" class="form-control" placeholder="A comma-separated list of tags">
+                      {{blog.tags.all|join:', '}}
+                    </textarea>
+                  </div>
+                  <div class="form-group">
+                    <input id="is_published" name="is_published" type="checkbox" class="form-control"
+                    {% if blog.is_published %}
+                        checked
+                        value="yes"
+                    {% endif %}
+                    >
+                  </div>
+                  <div class="form-group text-center">
+                    <button type="submit" class="btn btn-block btn-white py-3 px-5">Edit</button>
+                  </div>
+                </form>
+                <div class="text-center mb-2">
+                  <span><strong>OR</strong></span>
+                </div>
+                <div class="text-center">
+                    <a href="{% url 'delete_blog' blog.author.user.username blog.slug %}" class="btn btn-block btn-danger py-3 px-5">Delete</a>
+                </div>
+                <div class="text-center mb-2">
+                    <span><strong>OR</strong></span>
+                </div>
+                <div class="text-center">
+                    <a href="{% url 'single_blog' blog.author.user.username blog.slug %}" class="btn btn-block btn-white py-3 px-5">Cancel</a>
+                </div>
+              </div>          
+              </div>
+            </div>
+          </section> <!-- .section -->
+
+
+        </div> <!-- .col-md-12 -->
+    </div> <!-- .conteiner -->
+  </section> <!-- .section -->
+{% endblock content %}

@@ -38,27 +38,30 @@
               </a> -->
               <div class="text p-4 d-block">
                 <div class="meta mb-3">
-                  <div><a href="#"><span class="icon-person"></span>{{blog.author.user.username}}</a></div>
-                  <div><a href="#"><span class="icon-calendar"></span> {{ blog.created_at }}</a></div>
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  <div><a href="#"><span class="icon-heart text-danger"></span> 10</a></div>
+                  <div><a href="{% url 'get_user_profile' blog.author.user.username %}"><span class="icon-person"></span>{{blog.author.user.username}}</a></div>
+                  <div><span class="icon-calendar"></span> {{ blog.created_at }}</div>
+                  <div><span class="icon-chat"></span> {{ blog.comments.all.count }}</div>
+                  <div><span class="icon-heart text-danger"></span> {{blog.likes|length}}</div>
                 </div>
                 <h3 class="heading mt-3"><a href="{% url 'single_blog' blog.author.user.username blog.slug %}">{{ blog.title }}</a></h3>
                 <p>{{ blog.text_slug }}</p>
                 <div class="meta mb-3">
                   <div><a href="#"><span class="icon-person"></span> Category: <span class="text-warning">{{ blog.category }}</span></a></div>
                 </div>
+                {% if blog.tags.all %}
                 <div class="meta">
                   <div>
                     <div class="tagcloud">
                       <span class="icon-tag"></span> Tags:
-                      <a href="#" class="tag-cloud-link">dish</a>
-                      <a href="#" class="tag-cloud-link">menu</a>
-                      <a href="#" class="tag-cloud-link">food</a>
+                      {% for tag in blog.tags.all %}
+                      <a href="#" class="tag-cloud-link"> {{tag.name}} </a>
+                      {% endfor %}
+                      
                     </div>
 
                   </div>
                 </div>
+                {% endif %}
               </div>
             </div>
           </div>

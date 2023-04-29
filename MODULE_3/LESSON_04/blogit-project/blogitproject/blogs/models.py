@@ -4,6 +4,8 @@ from comments.models import Comment
 from django.contrib.postgres.fields import ArrayField
 from django.utils.text import slugify
 import uuid
+from taggit.managers import TaggableManager
+
 
 # Create your models here.
 class Blog(models.Model):
@@ -36,6 +38,7 @@ class Blog(models.Model):
         help_text='Collects profile ids as Integer'
     ) 
     is_published = models.BooleanField(default=True)
+    tags = TaggableManager(blank=True)
 
     def __str__(self) -> str:
         return '{0} {1} ({2})'.format(

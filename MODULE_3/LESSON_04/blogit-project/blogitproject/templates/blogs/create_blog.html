@@ -46,14 +46,14 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <select name="category" class="form-control" required>
+                    <select name="category" class="form-control" required >
                         <option value="" selected disabled hidden>Choose category...</option>
                         {% for category in categories %}
-                        <option value="{{category}}">{{category}}</option>
+                        <option value="{{category}}" style="background-color:rgb(5, 55, 91);" >{{category}}</option>
                         {% endfor %}
                     </select> 
                     <div class="invalid-feedback" style="color: lime;">
-                        Please choose a category.
+                       Please choose a category.
                     </div>
                     
                   </div>
@@ -63,9 +63,9 @@
                         Please add an image.
                     </div>
                   </div>
-                  <!-- <div class="form-group">
+                  <div class="form-group">
                     <textarea name="tags" cols="30" rows="3" class="form-control" placeholder="A comma-separated list of tags"></textarea>
-                  </div> -->
+                  </div>
                   <div class="form-group text-center">
                     <button type="submit" class="btn btn-block btn-white py-3 px-5">Create</button>
                   </div>
