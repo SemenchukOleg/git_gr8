@@ -61,21 +61,21 @@ def create_blog(request):
 @login_required
 def edit_blog(request, author, slug):
     if author != request.user.username:
-        messages.error(request, "You can't edit non your blog!")
+        messages.error(request, "You can't edit non-your blog!")
         return render('index')
     
     user = request.user
     profile = Profile.objects.get(user=user)
     categories = [category[0] for category in Blog.CATEGORY_CHOICE]
     blog = get_object_or_404(Blog, author=profile, slug=slug)
-
+    
     context = {
         'profile': profile,
         'categories': categories,
         'blog': blog,
     }
 
-    if request.method == "GET":
+    if request.method == 'GET':
         return render(request, 'blogs/edit_blog.html', context=context)
     
     if request.method == 'POST':
@@ -84,26 +84,24 @@ def edit_blog(request, author, slug):
         category = request.POST['category']
         tags = request.POST['tags']
         is_published = bool(request.POST.get('is_published', False))
-        
-        #edit blog
+        # edit blog
         blog.title = title
         blog.text = text
         blog.category = category
         blog.is_published = is_published
-
-        #tags
+        # tags
         if tags:
             blog.tags.clear()
-            tags = tags.replace(' ', '').replace('\n', '').replace('\t', '').replace('\r', '').split(',')
+            tags = tags.replace(' ', '').replace('\r', '').replace('\t', '').replace('\n', '').split(',')
             for tag in tags:
                 blog.tags.add(tag)
         try:
-            if any (request.FILES['image']):
+            if any(request.FILES):
                 blog.image = request.FILES['image']
         except:
-            return render (request, 'blogs/edit_blog.html', context=context)
+            return render(request, 'blogs/create_blog.html', context=context)
         blog.save()
-        return redirect ('/blogs/{0}/{1}/view'.format(author, blog.slug))
+        return redirect('/blogs/{0}/{1}/view'.format(author, blog.slug))
     
 @login_required
 def delete_blog(request, author, slug):

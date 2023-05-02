@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from profiles.models import Profile
 from django.contrib.auth.decorators import login_required
+from blogs.models import Blog
+from django.core.paginator import Paginator
+
 
 # Create your views here.
 
@@ -8,9 +11,17 @@ from django.contrib.auth.decorators import login_required
 def get_user_profile(request, username):
     if request.method == 'GET':
         profile = get_object_or_404(Profile, user__username=username)
+        blogs = Blog.objects.filter(author=profile)
         # profile = Profile.objects.get(user__username=username)
+
+        #Pginator profile blogs
+        paginator = Paginator(blogs, 3)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
         context = {
             'profile': profile,
+            'blogs': page_obj,
         }
         return render(request, 'profiles/profile.html', context=context)
     

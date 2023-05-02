@@ -67,134 +67,45 @@
           </div>
           <!-- End Single blog -->
           {% endfor %}
+        {% if blogs %}
           <!-- Pagination -->
           <div class="row mt-5">
             <div class="col text-center">
               <div class="block-27">
                 <ul>
-                  <li><a href="#">&lt;</a></li>
-                  <li class="active"><span>1</span></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">&gt;</a></li>
+                  {% if blogs.has_previous %}
+                  <li><a href="/?page={{blogs.previous_page_number}}{{query_string}}">&lt;</a></li>
+                  {% endif %}
+                  {% for i in blogs.paginator.page_range %}
+                  {% if blogs.number == i %}
+                  <li class="active"><span>{{i}}</span></li>
+                  {% else %}
+                  <li><a href="/?page={{i}}{{query_string}}">{{i}}</a></li>
+                  {% endif %}
+                  {% endfor %}
+                  {% if blogs.has_next %}
+                  <li><a href="/?page={{blogs.next_page_number}}{{query_string}}">&gt;</a></li>
+                  {% endif %}
                 </ul>
               </div>
             </div>
           </div>
+        {% else %}
+          <div class="row mt-5">
+            <div class="col text-center">
+              <div class="block-27">
+                <h3>Blogs not found...</h3>
+                <a class="btn btn-primary" href="/"> Returnt to the Homepage </a>
+              </div>
+            </div>
+          </div>
+        {% endif %}
           <!-- End Pagination -->
         </div> <!-- .col-md-8 -->
 
         <!-- Right Side Bar -->
-        <div class="col-md-4 sidebar ftco-animate">
-          <div class="sidebar-box">
-            <form action="#" class="search-form">
-              <div class="form-group">
-                <span class="icon fa fa-search"></span>
-                <input type="text" class="form-control" placeholder="Type a keyword">
-                <button class="btn btn-block btn-primary mt-3">Search</button>
-              </div>
-            </form>
-          </div>
-
-          <div class="sidebar-box ftco-animate">
-            <div class="sort-by">
-              <h3>Sort by</h3>
-              <li><a class="active" href="#">A-Z</a></li>
-              <li><a href="#">Z-A</a></li>
-              <li><a href="#">Latest</a></li>
-              <li><a href="#">Oldest</a></li>
-            </div>
-          </div>
-
-          <div class="sidebar-box ftco-animate">
-            <div class="categories">
-              <h3>Categories</h3>
-              <li><a href="#">Tour <span>(12)</span></a></li>
-              <li><a href="#">Hotel <span>(22)</span></a></li>
-              <li><a href="#">Coffee <span>(37)</span></a></li>
-              <li><a href="#">Drinks <span>(42)</span></a></li>
-              <li><a href="#">Foods <span>(14)</span></a></li>
-              <li><a href="#">Travel <span>(140)</span></a></li>
-            </div>
-          </div>
-
-          <div class="sidebar-box ftco-animate">
-            <h3>Recent Blog</h3>
-            <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url({% static 'images/image_1.jpg' %});"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                </div>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  <div><a href="#"><span class="icon-heart"></span> 10</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url({% static 'images/image_2.jpg' %});"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                </div>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  <div><a href="#"><span class="icon-heart"></span> 10</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url({% static 'images/image_3.jpg' %});"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                </div>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  <div><a href="#"><span class="icon-heart"></span> 10</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url({% static 'images/image_5.jpg' %});"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                </div>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  <div><a href="#"><span class="icon-heart text-danger"></span> 10</a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="sidebar-box ftco-animate">
-            <h3>Tag Cloud</h3>
-            <div class="tagcloud">
-              <a href="#" class="tag-cloud-link">dish</a>
-              <a href="#" class="tag-cloud-link">menu</a>
-              <a href="#" class="tag-cloud-link">food</a>
-              <a href="#" class="tag-cloud-link">sweet</a>
-              <a href="#" class="tag-cloud-link">tasty</a>
-              <a href="#" class="tag-cloud-link">delicious</a>
-              <a href="#" class="tag-cloud-link">desserts</a>
-              <a href="#" class="tag-cloud-link">drinks</a>
-            </div>
-          </div>
-
-        </div>
+        {% include 'partials/_sidebar.html' %}
+        
         <!-- End Right Side Bar -->
 
       </div> <!-- .row -->
