@@ -27,11 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# import local_settings.py
-try:
-    from blogitproject.local_settings import *
-except ModuleNotFoundError:
-    print("Модуль local_settings.py не найден")
 
 
 # Application definition
@@ -46,12 +41,14 @@ INSTALLED_APPS = [
 
     'easy_thumbnails',
     'taggit',    
+    'widget_tweaks',
 
     'pages',   #install pages app
     'accounts',    #install pages app
     'profiles',    #install profiles app
     'comments',    #install comments app
     'blogs',    #install blogs app
+    'leads',    #install leads app
 
 ]
 
@@ -170,3 +167,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #taggit
 TAGGIT_CASE_INSENSITIVE = True
+
+#EMAIL SETTINGS
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = ''
+EMAIL_PORT = 0
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_SSL = True
+EMAIL_USE_TLS = False
+
+# import local_settings.py
+try:
+    from blogitproject.local_settings import *
+except ModuleNotFoundError:
+    print("Модуль local_settings.py не найден")
