@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from profiles.utils import generate_profile_thumbnail
-
+import uuid
 # Create your models here.
 
 class Profile(models.Model):
@@ -14,6 +14,7 @@ class Profile(models.Model):
     verbose_name='Profile Image', blank=True)
     profile_image_thumbnail = models.ImageField(blank=True, verbose_name='Profile Image Thumbnail')
     is_thumbnailed = models.BooleanField(default=False, help_text='Флаг, который регулирует состояние созданияминиатюры для фото профиля')
+    reset_password_link_uuid = models.UUIDField(default=uuid.uuid4, blank=True)
 
     def __str__(self) -> str:
         return self.user.get_username() + '(user_id: {0}, profile_id:{1})'.format(self.user.id, self.id)
@@ -31,7 +32,8 @@ def create_user_profile(sender, instance, created, *args, **kwargs):
     if created:
         print('Сигнал вызван')
         profile = Profile.objects.create(
-            user=instance
+            user=instance,
+            reset_password_link_uuid=uuid.uuid4(),
             ) 
         print('Профиль привязан')
         print( 'Profile :', profile)    

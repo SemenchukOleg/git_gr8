@@ -2,12 +2,14 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from blogs.models import Blog
 from django.core.paginator import Paginator
+from pages.tasks import long_await    #для примера
 
 # Create your views here.
 
 
 def index(request):
-    blogs = Blog.objects.filter(is_published=True)
+    long_await.delay(10)    #для примера
+    blogs = Blog.objects.order_by('-update_at').filter(is_published=True)
 
     query_string = ''
 

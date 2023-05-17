@@ -177,6 +177,8 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
 
+
+
 # import local_settings.py
 try:
     from blogitproject.local_settings import *

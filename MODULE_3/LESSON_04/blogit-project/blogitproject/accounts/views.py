@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
+from accounts.tasks import send_email_reset_password_task
+from profiles.models import Profile
+import uuid
 
 def login(request):
     if request.method == 'GET':
@@ -51,3 +54,58 @@ def logout(request):
     auth.logout(request)
     messages.info(request, 'Good bye!')
     return redirect('login')
+
+def forgot_password(request):
+    
+    if request.user.is_authenticated:
+        messages.info(request, 'You are authenticated and can not use forgot passport option')
+        return redirect('index')
+    
+    if request.method == 'GET':
+        return render(request, 'accounts/forgot_password.html')
+    
+    if request.method == 'POST':
+        email = request.POST['email']
+        # проверим email в базе данных
+        try:
+            user = User.objects.get(email=email)
+        except:
+            #если email не нашелся - то сообщение об ошибке
+            messages.error(request, 'This email is not register!')
+            return render(request, 'accounts/forgot_password.html')
+        else:
+            profile = Profile.objects.get(user=user)
+            #условие если есть, то отправляем ссылку
+            link = profile.reset_password_link_uuid
+            subject = 'Forgot password [BlogIT]'
+            message = 'Click to link to reset password:\n\n{link}'
+            send_email_reset_password_task.delay(message=message, email=email, subject=subject )
+            messages.success(request, 'Email has been sent to address, {}!'.format(email))
+            return redirect('forgot_password')
+        
+def change_password(request, reset_password_link_uuid):
+    
+    try:
+        profile = Profile.objects.get(reset_password_link_uuid=reset_password_link_uuid)
+    except:
+        messages.error(request, 'somethig going wrong!')
+        return render(request, 'accounts/forgot_password.html')
+    else:
+        user=profile.user
+
+    if request.method == 'GET':
+        return render(request, 'accounts/change_password.html')
+    
+    if request.method == 'POST':
+        password = request.POST['password']
+        password1 = request.POST['password1']
+        if password==password1:
+            user.set_password(password)
+            user.save()
+            #обновление ссылки на восстановление после смены пароля
+            profile.reset_password_link_uuid = uuid.uuid4
+            messages.success(request, 'Your password successfully changed!')
+            return redirect('login')
+        else:
+            messages.error(request, 'Passwords did not mach!')
+            return render(request, 'accounts/change_password.html')
