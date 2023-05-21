@@ -78,7 +78,7 @@ def forgot_password(request):
             #условие если есть, то отправляем ссылку
             link = profile.reset_password_link_uuid
             subject = 'Forgot password [BlogIT]'
-            message = 'Click to link to reset password:\n\n{link}'
+            message = f'Click to link to reset password:\n\nhttp://127.0.0.1:8000/accounts/change_password/{link}'
             send_email_reset_password_task.delay(message=message, email=email, subject=subject )
             messages.success(request, 'Email has been sent to address, {}!'.format(email))
             return redirect('forgot_password')

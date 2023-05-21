@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-
 {% load static %}
+{% load thumbnail %}
+{% load profile_activity_tag %}
 
 {% block title %} EDIT PROFILE {% endblock title %}
 
@@ -36,30 +37,28 @@
                 <div class="col-md-6 mr-5">
                   <img src="{{profile.profile_image_thumbnail.url}}" alt="Image placeholder" class="img-fluid mb-4">
                   <div class="meta mb-3">
-                    <div><span class="icon-calendar"></span> July 12, 2018</div>
+                    <div class="mr-3 text-white"><span class="icon-calendar"></span> {{profile.user.date_joined}}</div>
+                    {% profile_activity_counter profile.user.username as data_counter %}
                     <div class="d-flex justify-content-start">
-                      <div class="mr-3"><span class="icon-list"></span> 99</div>
-                        <div class="mr-3"><span class="icon-chat"></span> 19</div>
-                        <div class="mr-3"><span class="icon-heart"></span> 10</div>
+                      <div class="mr-3 text-white"><span class="icon-list"></span> {{data_counter.blogs_data}}</div>
+                        <div class="mr-3 text-white"><span class="icon-chat"></span> {{data_counter.comments_data}}</div>
+                        <div class="mr-3 text-white"><span class="icon-heart"></span> {{data_counter.likes_data}}</div>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <h3>@{{ profile.user.username }}</h3>
-                  <p class="text-muted small">{{profile.status}}</p>
+                  <p class="text-white small">{{profile.status}}</p>
                   <p>{{profile.about}}</p>
                   <!-- <ul>
                     <li>Firstname: Nick</li>
                     <li>Lastname: Jones</li>
                   </ul> -->
-                  <div class="sort-by">
+                  <div class="sort-by text-white">
                     <li>Firstname: {{profile.user.first_name}}</li>
                     <li>Lastname: {{profile.user.last_name}}</li>
-                    <li></li>
                   </div>
-                  {% if user.id == profile.user.id %}
-                  <a href="{% url 'edit_user_profile' profile.user.username %}" class="btn btn-primary py-3 px-5">Edit profile</a>
-                  {% endif %}
+                  
     
                 </div>
               </div>

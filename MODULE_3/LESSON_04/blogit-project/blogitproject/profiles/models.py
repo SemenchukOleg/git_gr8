@@ -1,10 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from profiles.utils import generate_profile_thumbnail
 import uuid
+#модули для сигнала 
+from django.contrib.auth import get_user_model
+from django.db.models.signals import pre_save
 # Create your models here.
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -36,7 +40,7 @@ def create_user_profile(sender, instance, created, *args, **kwargs):
             reset_password_link_uuid=uuid.uuid4(),
             ) 
         print('Профиль привязан')
-        print( 'Profile :', profile)    
+        print( 'Profile :', profile) 
 
 
 @receiver (post_save, sender=Profile)
@@ -46,3 +50,23 @@ def creative_profile_image_thumbnail(sender, instance, created, *args, **kwargs)
         instance.change_profile_image_thumbnail()
         instance.is_thumbnailed = True
         instance.save()
+
+#взято из https://stackoverflow.com/questions/41413423/detect-a-changed-password-in-django
+@receiver(pre_save, sender=get_user_model())
+def detect_password_change(sender, instance, **kwargs):
+    """
+    Checks if the user changed his password
+    """
+    if instance._password is None:
+        return
+
+    try:
+        user = get_user_model().objects.get(id=instance.id)
+    except get_user_model().DoesNotExist:
+        return
+    
+    #дополнено мною
+    change_reset_password_link_uuid = Profile.objects.get(user=user)
+    change_reset_password_link_uuid.reset_password_link_uuid = uuid.uuid4()
+    change_reset_password_link_uuid.save()
+    # if you get here, the user changed his password
