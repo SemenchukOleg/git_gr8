@@ -7,7 +7,7 @@ db.sqlite3
 db.sqlite3-journal
 todoitapiproject/media/*
 todoitapiproject/static/*
-venv_todoitapi/*
+venv_todoitapi/
 .DS_Store
 .vscode
 *.pid
