@@ -7,6 +7,6 @@ from rest_framework import status
 @api_view(['GET'])
 def test(request):
     return Response (
-        {'message': 'APIwarks correctly!',},
+        {'message': 'API works correctly!',},
         status = status.HTTP_200_OK
     )   
