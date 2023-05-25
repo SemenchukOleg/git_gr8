@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'django.contrib.admin', 
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
 
     # Apps
     'demoapi',
+    'tasks',
+    'apiv1',
 ]
 
 MIDDLEWARE = [
@@ -137,6 +139,9 @@ MEDIA_URL = '/media/'
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ],
     
     'DATE_INPUT_FORMATS' : [
     '%d.%m.%Y', '%Y-%m-%d', '%d.%m.%y', # '25.10.2006', '25.10.2006', '25.10.06'
@@ -151,6 +156,9 @@ REST_FRAMEWORK = {
     ],
     'DATE_FORMAT' : 'd.m.Y',
     'DATETIME_FORMAT' : 'd.m.Y HH:MM:SS',
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer'
+    ]
 }
 
 # Default primary key field type
