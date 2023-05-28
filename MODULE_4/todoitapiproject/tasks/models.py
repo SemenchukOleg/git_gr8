@@ -17,6 +17,7 @@ class Task(models.Model):
     is_completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User,blank=False , on_delete=models.CASCADE, null=False)
 
     @property
     def short_description(self):

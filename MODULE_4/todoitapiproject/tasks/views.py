@@ -1,30 +1,40 @@
 from django.shortcuts import render
-from rest_framework.decorators import api_view, parser_classes, renderer_classes
+from rest_framework.decorators import (
+    api_view, 
+    parser_classes, 
+    renderer_classes,
+    permission_classes
+    )
 from rest_framework.response import Response
 from tasks.serializers import TaskSerializer, TaskNewSerializer
 from tasks.models import Task
 from rest_framework import status
 from rest_framework.parsers import JSONParser, FormParser, MultiPartParser
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 
 # Create your views here.
 # /api/v1/tasks
 @api_view(['GET', 'POST'])
 @parser_classes([JSONParser, FormParser])
 @renderer_classes([JSONRenderer, BrowsableAPIRenderer])
+@permission_classes([IsAuthenticated])
 def get_task_list(request):
     if request.method == 'GET':
+        task = Task.objects.filter(user=request.user)
         tasks = Task.objects.all()
         serializer_tasks = TaskSerializer(tasks, many=True)
         return Response(serializer_tasks.data, status=status.HTTP_200_OK)
     
     if request.method == 'POST':
         #Получить данные
+        user=request.user
         data = request.data
+        data.update({'user': user.id})
         selializer_new_task = TaskNewSerializer(data=data)
         if selializer_new_task.is_valid():
             selializer_new_task.save()
-            return Response(status=status.HTTP_201_CREATED)
+            return Response(selializer_new_task.data, status=status.HTTP_201_CREATED)
         else:
             return Response({'message': 'data is wrong'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -34,7 +44,7 @@ def get_task_list(request):
 @renderer_classes([JSONRenderer, BrowsableAPIRenderer])
 def get_or_update_task_by_id(request, id):
     try:
-        task = Task.objects.get(id=id)
+        task = Task.objects.get(id=id, user=request.user)
     except Task.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     
@@ -71,7 +81,7 @@ def get_task_priorities_list(request):
 @renderer_classes([JSONRenderer, BrowsableAPIRenderer])
 def complete_all_tasks(request):
     if request.method == 'PUT':
-        tasks = Task.objects.filter(is_completed=False)
+        tasks = Task.objects.filter(user=request.user).filter(is_completed=False)
         for task in tasks:
             task.is_completed = True
             task.save()
@@ -83,7 +93,7 @@ def complete_all_tasks(request):
 @renderer_classes([JSONRenderer, BrowsableAPIRenderer])
 def uncomplete_all_tasks(request):
     if request.method == 'PUT':
-        tasks = Task.objects.filter(is_completed=True)
+        tasks = Task.objects.filter(user=request.user).filter(is_completed=True)
         for task in tasks:
             task.is_completed = False
             task.save()
@@ -95,7 +105,7 @@ def uncomplete_all_tasks(request):
 @renderer_classes([JSONRenderer, BrowsableAPIRenderer])
 def delete_all_tasks(request):
     if request.method == 'DELETE':
-        tasks = Task.objects.all()
+        tasks = Task.objects.filter(user=request.user)
         for task in tasks:
             task.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
